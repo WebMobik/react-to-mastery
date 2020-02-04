@@ -7,7 +7,7 @@ import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import {auth} from './firebase/firebase'
+import {auth, createUserProfileDocument} from './firebase/firebase'
 
 class App extends Component {
   constructor() {
@@ -22,9 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(user => { // give a authorization user
-      this.setState({ currentUser: user }) // user stay authorization
-    
-      console.log(user);
+      createUserProfileDocument(user);
     });
   }
 
