@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import FromInput from '../../components/form-input/form-input.component';
+import FromInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import { signInWithGoogle } from '../../firebase/firebase';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -42,16 +44,21 @@ export default class SignIn extends Component {
                         handleChange={this.handleChange} 
                         value={email}
                         label="email"
-                        required />
+                        //required 
+                        />
                     <FromInput 
                         name="password" 
                         type="password"
                         handleChange={this.handleChange} 
                         value={password}
                         label="password"
-                        required/>
+                        //required
+                        />
 
-                    <input type="submit" value="Submit Form" />
+                    <CustomButton type="submit">Sign In</CustomButton>
+                    <CustomButton onClick={signInWithGoogle}>
+                        Sign In With Google
+                    </CustomButton>
                 </form>
             </div>
         )
